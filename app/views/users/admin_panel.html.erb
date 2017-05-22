@@ -19,8 +19,7 @@
 					<th data-sortable="true">Last Name</th>
 					<th data-sortable="true">Email</th>
 					<th data-sortable="true">Role</th>
-					<th data-sortable="false">Admin Role</th>
-					<th data-sortable="false">Guest Role</th>
+					<th data-sortable="false">Select Role</th>
 					<th data-sortable="false">Delete Request</th>
 				   </tr>
 				</thead>
@@ -35,18 +34,9 @@
 								<%= form_tag('/update_role') do %>
 									<div class="hidden">
 										<%= number_field_tag :user, user.id %>
-										<%= text_field_tag :role, "admin" %>
 									</div>
-									<p> <%= submit_tag "Update Role", class: "btn btn-warning btn-sm", data: { confirm: 'Are You Sure?' } %></p>
-								<% end %>
-							</td>
-							<td>
-								<%= form_tag('/update_role') do %>
-									<div class="hidden">
-										<%= number_field_tag :user, user.id %>
-										<%= text_field_tag :role, "guest" %>
-									</div>
-									<p> <%= submit_tag "Update Role", class: "btn btn-success btn-sm", data: { confirm: 'Are You Sure?' } %></p>
+									<%= select_tag(:role, options_for_select(User::ROLE), include_blank: "Select User Role", class: "form-control field-size-160", required: true, style: "display: inline-block;") %>
+									<%= submit_tag "Update Role", class: "btn btn-primary btn-sm", data: { confirm: 'Are You Sure?', style: "display: inline-block;" } %>
 								<% end %>
 							</td>
 							<td>
@@ -85,8 +75,7 @@
 					<th>Last Name</th>
 					<th>Email</th>
 					<th>Role</th>
-					<th>Admin Role</th>
-					<th>Guest Role</th>
+					<th>Select Role</th>
 					<th>Delete Request</th>
 				   </tr>
 				</thead>
@@ -101,18 +90,9 @@
 						<%= form_tag('/update_role') do %>
 							<div class="hidden">
 								<%= number_field_tag :user, user.id %>
-								<%= text_field_tag :role, "admin" %>
 							</div>
-							<p> <%= submit_tag "Update Role", class: "btn btn-warning btn-sm", data: { confirm: 'Are You Sure?' } %></p>
-						<% end %>
-					</td>
-					<td>
-						<%= form_tag('/update_role') do %>
-							<div class="hidden">
-								<%= number_field_tag :user, user.id %>
-								<%= text_field_tag :role, "guest" %>
-							</div>
-							<p> <%= submit_tag "Update Role", class: "btn btn-success btn-sm", data: { confirm: 'Are You Sure?' } %></p>
+							<%= select_tag(:role, options_for_select(User::ROLE), include_blank: "Select User Role", class: "form-control field-size-160", required: true, style: "display: inline-block;") %>
+							<%= submit_tag "Update Role", class: "btn btn-primary btn-sm", data: { confirm: 'Are You Sure?', style: "display: inline-block;" } %>
 						<% end %>
 					</td>
 					<td>

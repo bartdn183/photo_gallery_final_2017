@@ -18,6 +18,30 @@
     <%= render 'layouts/navbar' %>
 
     <%= yield %>
+
+        <!-- Modal -->
+    <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel"aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+              <iframe frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+    </div>
+
+
+
+    <script>
+    $('#Link').click(function () {
+        var src = 'https://www.youtube.com/embed/uoU4CQ6yqJY';
+        $('#videoModal iframe').attr('src', src);
+    });
+
+    $('#videoModal').on('hidden.bs.modal', function () {
+        $('#videoModal iframe').removeAttr('src');
+    })
+
+    </script>
     
   </body>
 </html>

@@ -51,6 +51,10 @@ body {
 	max-height: 550px;
 }
 
+.field-size-160 {
+	max-width: 160px;
+}
+
 .no-margin {
 	margin: 0;
 }
@@ -184,11 +188,11 @@ nav li a:hover {
 	display: inline-block;
 }
 
-.border-black {
-    border: 2px solid black !important;
+iframe {
+	width: 560px;
+	height: 316px;
 }
 
-.btn {
-	text-transform: uppercase;
-	font-size: 16px;
+.border-black {
+    border: 2px solid black !important;
 }
