@@ -1,0 +1,53 @@
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default border-black">
+        <div class="panel-heading heading-bckgr-yellow">
+          <center>
+            <h3 class="no-margin">ALL PICTURE GALLERIES</h3>
+          </center>
+        </div>
+        <div class="panel-heading heading-bckgr-black">
+          <div class="inline-block">
+            <%= link_to root_path, class: "btn btn-primary" do %><i class="fa fa-home" aria-hidden="true"></i> HOME PAGE <% end %>
+            <%= link_to new_gallery_path, class: "btn btn-success" do %> <span class="glyphicon glyphicon-new-window"></span> ADD NEW GALLERY <% end %>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-striped" data-toggle="table">
+              <thead>
+                <tr>
+                  <th data-sortable="true">Name</th>
+                  <th data-sortable="true">Date</th>
+                  <th data-sortable="false">Description</th>
+                  <th data-sortable="true">Created by</th>
+                  <th data-sortable="true">Updated by</th>
+                  <th data-sortable="false"></th>
+                  <th data-sortable="false"></th>
+                  <th data-sortable="false"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @galleries.each do |gallery| %>
+                  <tr>
+                    <td><%= gallery.name %></td>
+                    <td><%= gallery.date %></td>
+                    <td><%= gallery.description %></td>
+                    <td><%= gallery.created_by %></td>
+                    <td><%= gallery.updated_by %></td>
+                    <td><%= link_to gallery, class: "btn btn-info btn-sm" do %> <span class="glyphicon glyphicon-blackboard"></span> SHOW GALLERY <% end %></td>
+                    <td><%= link_to edit_gallery_path(gallery), class: "btn btn-warning btn-sm" do %> <span class="glyphicon glyphicon-edit"></span> EDIT GALLERY <% end %></td>
+                    <td><%= link_to gallery, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" do %> <span class="glyphicon glyphicon-trash"></span> ERASE GALLERY <% end %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
