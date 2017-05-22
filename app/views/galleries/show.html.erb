@@ -29,10 +29,11 @@
                 <p><%= image_tag picture.image, class: "img-height-modal" %></p>
               </div>
               <div class="modal-footer" style="background: black; color: #fed136; border: 1px solid white; border-radius: 5px;">
-                 <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                
                 <% if signed_in? && current_user.role == "admin" %>
                  <%= link_to picture, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" do %> <span class="glyphicon glyphicon-trash"></span> ERASE PICTURE <% end %>
                 <% end %>
+                <button type="button" class="btn btn-warning" data-dismiss="modal"><i class="fa fa-times-circle" aria-hidden="true"></i> Close</button>
               </div>
             </div>
           </div>
