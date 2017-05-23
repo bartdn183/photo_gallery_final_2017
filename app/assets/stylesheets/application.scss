@@ -62,6 +62,11 @@ body {
 	margin-top: 0;
 }
 
+.form-control-xl {
+	height: 40px;
+	font-size: 18px;
+}
+
 .carousel-inner > .item > img, .carousel-inner > .item > a > img {
 	height: 630px;
 	max-width: 100%;
@@ -107,6 +112,7 @@ nav li a:hover {
 	color: #428bca !important;
 	transition: ease 2.5s;
 }
+
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
 	color: #428bca !important;
