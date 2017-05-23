@@ -1,6 +1,9 @@
 class PicturesController < ApplicationController
 
 	before_action :set_picture, only: [:destroy, :show]
+  before_action :admin_only_access, only: [:destroy]
+  before_action :admin_guest_access, only: [:show]
+  include ApplicationHelper
 
   def show
   end
