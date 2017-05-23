@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   
   resources :galleries, param: :name
   resources :pictures, only: [:show, :destroy]
+  resources :users, only: [:show], param: :username, :path => ''
 
   root 'galleries#home'
   post 'update_role' => 'users#update_role'

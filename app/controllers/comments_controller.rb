@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        @comment.create_activity key: 'comment.created', owner: @comment
         format.html { redirect_to picture_url(id: @comment.picture_id), notice: 'Comment was successfully created.' }
       else
         format.html { redirect_to picture_url(id: @comment.picture_id) }
@@ -22,6 +23,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
+        @comment.create_activity key: 'comment.updated', owner: @comment
         format.html { redirect_to picture_url(id: @comment.picture_id), notice: 'Comment was successfully updated.' }
       else
         format.html { render :edit }

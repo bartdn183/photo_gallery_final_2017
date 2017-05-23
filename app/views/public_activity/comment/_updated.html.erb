@@ -1,0 +1,3 @@
+<% if activity.trackable %>
+	<p><%= activity.owner.user.first_name %> <%=activity.owner.user.last_name %> has updated his comment to a picture in album <%= link_to activity.owner.gallery.name, picture_path(id: activity.owner.picture_id) %> <%= time_ago_in_words(activity.owner.created_at) %> ago.</p>
+<% end %>

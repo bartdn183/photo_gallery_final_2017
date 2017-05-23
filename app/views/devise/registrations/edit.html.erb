@@ -9,10 +9,19 @@
       <div class="panel-body">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= devise_error_messages! %>
+
+        <div class="form-group">
+          <%= f.label :username %><br />
+          <div class="input-group">
+          <%= f.text_field :username, autofocus: true, required: true, class: "form-control form-control-xl", placeholder: "Username" %>
+          <div class="input-group-addon"><i class="icon-append fa fa-user"></i></div>
+          </div>
+        </div>
+
           <div class="form-group">
           <%= f.label :first_name %><br />
           <div class="input-group">
-          <%= f.text_field :first_name, autofocus: true, required: true, class: "form-control form-control-xl", placeholder: "First Name" %>
+          <%= f.text_field :first_name, required: true, class: "form-control form-control-xl", placeholder: "First Name" %>
           <div class="input-group-addon"><i class="icon-append fa fa-user"></i></div>
           </div>
         </div>
@@ -25,11 +34,101 @@
           </div>
         </div>
 
-        <div class="form-group hidden">
-          <%= f.label :role %><br />
-          <%= f.text_field :role, value: "pending", class: "form-control form-control-xl", placeholder: "Role" %>
+        <div class="form-group">
+          <%= f.label :birthday %><br />
+                    <div class="input-group">
+          <%= f.date_field :birthday, required: true, class: "form-control form-control-xl" %>
+          <div class="input-group-addon"><i class="icon-append fa fa-birthday-cake"></i></div>
+          </div>
         </div>
 
+        <div class="form-group">
+          <%= f.label :address %><br />
+          <div class="input-group">
+          <%= f.text_field :address, class: "form-control form-control-xl", placeholder: "Address" %>
+          <div class="input-group-addon"><i class="icon-append fa fa-address-card-o"></i></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :city %><br />
+          <div class="input-group">
+          <%= f.text_field :city, class: "form-control form-control-xl", placeholder: "City" %>
+          <div class="input-group-addon"><i class="icon-append fa fa-address-card-o"></i></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :zip %><br />
+          <div class="input-group">
+          <%= f.number_field :zip, class: "form-control form-control-xl", placeholder: "Zip" %>
+          <div class="input-group-addon"><i class="icon-append fa fa-address-card-o"></i></div>
+          </div>
+        </div>
+
+
+
+        <div class="form-group">
+          <%= f.label "State Outside USA..." %><br />
+          <div class="input-group">
+          <%= f.text_field :state, class: "form-control form-control-xl", placeholder: "State Outside USA" %>
+          <div class="input-group-addon"><i class="icon-append fa fa-address-card-o"></i></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label "State Inside USA..." %>
+          <div class="input-group">
+          <%= f.select(:state, User::STATES, { include_blank: "Select US State"}, class: "form-control form-control-xl") %>
+          <div class="input-group-addon"><i class="icon-append fa fa-address-card-o"></i></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :country %>
+          <div class="input-group">
+          <%= f.select(:country, User::COUNTRIES, { include_blank: "Select Country"}, class: "form-control form-control-xl") %>
+          <div class="input-group-addon"><i class="icon-append fa fa-globe"></i></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :phone %><br />
+          <div class="input-group">
+          <%= f.phone_field :phone, class: "form-control form-control-xl", placeholder: "Phone" %>
+          <div class="input-group-addon"><i class="icon-append fa fa-phone"></i></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :school %><br />
+          <div class="input-group">
+          <%= f.text_area :school, class: "form-control form-control-xl", placeholder: "School", rows: 5 %>
+          <div class="input-group-addon"><i class="icon-append fa fa-graduation-cap"></i></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :work %><br />
+          <div class="input-group">
+          <%= f.text_area :work, class: "form-control form-control-xl", placeholder: "Work", rows: 5 %>
+          <div class="input-group-addon"><i class="icon-append fa fa-briefcase"></i></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :hobbies %><br />
+          <div class="input-group">
+          <%= f.text_area :hobbies, class: "form-control form-control-xl", placeholder: "Hobbies", rows: 5 %>
+          <div class="input-group-addon"><i class="icon-append fa fa-futbol-o"></i></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <strong>Upload Profile Picture</strong>
+          <%= f.file_field :logo %>
+        </div>
+        
           <div class="form-group">
             <%= f.label :email %><br />
             <div class="input-group">

@@ -35,6 +35,7 @@ class GalleriesController < ApplicationController
               @gallery.pictures.create(image: image, uploaded_by: "#{current_user.first_name} #{current_user.last_name}", gallery_id: @gallery.id)
             }
           end
+          @gallery.create_activity key: 'gallery.created', owner: @gallery
         format.html { redirect_to gallery_url(@gallery), notice: 'Gallery was successfully created.' }
       else
         format.html { render :new }
@@ -47,6 +48,7 @@ class GalleriesController < ApplicationController
 
     respond_to do |format|
       if @gallery.update(gallery_params)
+          @gallery.create_activity key: 'gallery.updated', owner: @gallery
           if params[:images]
             params[:images].each { |image|
               @gallery.pictures.create(image: image, uploaded_by: "#{current_user.first_name} #{current_user.last_name}", gallery_id: @gallery.id)
