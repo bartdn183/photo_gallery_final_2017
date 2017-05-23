@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   ROLE = ["pending", "guest", "admin"]
+
+  has_many :comments, dependent: :destroy
+
 end

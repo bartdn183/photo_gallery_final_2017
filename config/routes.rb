@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :comments
   get 'admin_panel' => 'users#admin_panel'
 
   devise_for :users, :controllers => { :registrations => "my_registrations" }

@@ -10,10 +10,17 @@
 	<div class="col-md-4 col-md-offset-4">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-			Comments
+			Make a Comment
 			</div>
 			<div class="panel-body">
-
+				<%= render 'comments/form' %>
+				<%= link_to "BACK TO ALBUM", gallery_path(name: @picture.gallery.name), class: "btn btn-primary btn-block btn-large", style: "margin-top: 10px;" %>
+			</div>
+			<div class="panel-heading" style="border-top: 1px solid #ddd;">
+			All Comments
+			</div>
+			<div class="panel-body">
+			<%= render @comment %>
 			</div>
 		</div>
 	</div>

@@ -1,6 +1,7 @@
 class Picture < ApplicationRecord
 
 	belongs_to :gallery
+	has_many :comments, dependent: :destroy
 
 	validates :gallery_id, :uploaded_by, presence: true
 

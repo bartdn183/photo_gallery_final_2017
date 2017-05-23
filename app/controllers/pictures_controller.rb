@@ -6,6 +6,7 @@ class PicturesController < ApplicationController
   include ApplicationHelper
 
   def show
+    @comment = Comment.new
   end
 
 	def destroy
