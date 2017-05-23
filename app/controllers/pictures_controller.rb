@@ -1,6 +1,9 @@
 class PicturesController < ApplicationController
 
-	before_action :set_picture, only: [:destroy]
+	before_action :set_picture, only: [:destroy, :show]
+
+  def show
+  end
 
 	def destroy
 		
