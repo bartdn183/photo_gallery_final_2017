@@ -51,6 +51,18 @@
             </li>
 
              <% end %>
+
+          <% if !signed_in? && current_page?(new_user_session_path) %>
+            <li class="devise-navbar-li-text no-border-left-navbar">Need an account? <span class="devise-navbar-signup"><%= link_to "CREATE ACCOUNT", new_user_registration_path, class: "btn btn-danger btn-small", data:{ turbolinks: "false" } %></span></li>
+          <% end %> 
+
+          <% if !signed_in? && current_page?(new_user_registration_path) %>
+            <li class="devise-navbar-li-text no-border-left-navbar">Already An Account? Sign In! <span class="devise-navbar-signin"><%= link_to "SIGN IN", new_user_session_path, class: "btn btn-primary btn-small", data:{ turbolinks: "false" } %></span></li>
+          <% end %>
+
+          <% if (!signed_in? && current_page?(new_user_password_path)) || (!signed_in? && current_page?(edit_user_password_path)) %>
+            <li class="devise-navbar-li-text no-border-left-navbar">Don't want to change your password? Sign In! <span class="devise-navbar-signin"><%= link_to "SIGN IN", new_user_session_path, class: "btn btn-primary  btn-small", data:{ turbolinks: "false" } %></span></li>
+          <% end %>
           </ul>
         </div>
         <!-- /.navbar-collapse -->
