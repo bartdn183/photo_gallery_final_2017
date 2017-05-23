@@ -16,6 +16,12 @@ module ApplicationHelper
 
 	end
 
+	def no_access(comment)
+		unless current_user.id == comment.user.id 
+			redirect_to root_url
+		end
+	end
+
 	def bootstrap_class_for(flash_type)
 		case flash_type
 			when "success"

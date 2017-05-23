@@ -1,7 +1,10 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :admin_guest_access, except: [:edit, :update, :destroy]
+  include ApplicationHelper
 
   def edit
+    no_access(@comment)
   end
 
   def create
