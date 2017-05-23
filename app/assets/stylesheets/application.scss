@@ -100,7 +100,6 @@ body {
 }
 
 .nav li {
-	width: 150px;
 	text-align: center;
 	background: black;
 	border-left: 1px solid rgba(255,255,255, 0.8);
@@ -113,9 +112,9 @@ body {
 
 .nav li a {
 	color: #fed136 !important;
-	font-weight: 900;
+	font-weight: 700;
 	font-size: 16px;
-	padding: 7px;
+	padding: 7px 20px;
 }
 
 nav li a:hover {
