@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
       if @comment.save
         format.html { redirect_to picture_url(id: @comment.picture_id), notice: 'Comment was successfully created.' }
       else
-        format.html { render :new }
+        format.html { redirect_to picture_url(id: @comment.picture_id) }
       end
     end
   end
