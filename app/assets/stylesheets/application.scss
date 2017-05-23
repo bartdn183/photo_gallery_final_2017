@@ -223,6 +223,17 @@ iframe {
 	font-size: 18px;
 }
 
+.close {
+	color: #fff;
+	opacity: 1;
+}
+
+.close:hover {
+	transition: 3s ease;
+	color: #fed136;
+	opacity: 1;
+}
+
 input:-webkit-autofill {
     -webkit-text-fill-color: black;
     -webkit-box-shadow: 0 0 0px 1000px white inset;

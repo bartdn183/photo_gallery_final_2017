@@ -57,13 +57,13 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "GalleryApp_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { :host => 'photo-gallery-bm.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'http://galleryapp.iwspmxrrxz.us-east-1.elasticbeanstalk.com/' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.smtp_settings = {
     address:     'smtp.gmail.com',
     port:        587,
-    domain:      'photo-gallery-bm.herokuapp.com:80',
+    domain:      'galleryapp.iwspmxrrxz.us-east-1.elasticbeanstalk.com:80',
     user_name:    ENV['GMAIL_USERNAME'],
     password:     ENV['GMAIL_PASSWORD'], 
     authentication:  'plain',
