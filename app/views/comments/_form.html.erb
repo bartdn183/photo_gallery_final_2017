@@ -17,12 +17,20 @@
 
   <div class="field hidden">
     <%= f.label :gallery_id %>
+    <% if controller_name == "gallaries" %>
     <%= f.number_field :gallery_id, value: @picture.gallery_id %>
+    <% else %>
+    <%= f.number_field :gallery_id, value: @comment.gallery_id %>
+    <% end %>
   </div>
 
   <div class="field hidden">
     <%= f.label :picture_id %>
+    <% if controller_name == "gallaries" %>
     <%= f.number_field :picture_id, value: @picture.id %>
+    <% else %>
+    <%= f.number_field :picture_id, value: @comment.picture_id %>
+    <% end %>
   </div>
 
   <div class="field hidden">

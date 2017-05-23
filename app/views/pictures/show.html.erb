@@ -8,16 +8,16 @@
 <hr>
 <div class="row">
 	<div class="col-md-4 col-md-offset-4">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-			Make a Comment
+		<div class="panel panel-default border-black">
+			<div class="panel-heading heading-bckgr-yellow">
+			<h4 class="no-margin"><i>Make a Comment</i></h4>
 			</div>
 			<div class="panel-body">
 				<%= render 'comments/form' %>
 				<%= link_to "BACK TO ALBUM", gallery_path(name: @picture.gallery.name), class: "btn btn-primary btn-block btn-large", style: "margin-top: 10px;" %>
 			</div>
-			<div class="panel-heading" style="border-top: 1px solid #ddd;">
-			All Comments
+			<div class="panel-heading heading-bckgr-yellow" style="border-top: 2px solid black;">
+			<h4 class="no-margin"><i><%= "#{pluralize(@picture.comments.size, "Comment")}" %></i></h4>
 			</div>
 			<div class="panel-body">
 			<%= render @comment %>

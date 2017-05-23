@@ -1,6 +1,19 @@
-<h1>Editing Comment</h1>
-
-<%= render 'form', comment: @comment %>
-
-<%= link_to 'Show', @comment %> |
-<%= link_to 'Back', comments_path %>
+<div class="jumbotron">
+  <div class="row">
+	<div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+		<div class="panel panel-default border-black">
+			<div class="panel-heading heading-bckgr-yellow">
+			  <center>
+			  	<h3 class="no-margin">EDIT COMMENT</h3>
+			  </center>
+			</div>
+			<div class="panel-body">
+				<%= render 'form' %>
+			</div>
+			<div class="panel-footer footer-bckgr-yellow">
+				<%= link_to 'BACK TO PICTURE', picture_path(id: @comment.picture_id), class: "btn btn-primary btn-block btn-large" %>
+			</div>
+		</div>
+	</div>
+  </div>
+</div>
