@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :registrations => "my_registrations" }
   
   resources :galleries, param: :name
-  resources :pictures, only: [:destroy]
+  resources :pictures, only: [:show, :destroy]
 
   root 'galleries#home'
   post 'update_role' => 'users#update_role'
