@@ -17,6 +17,19 @@
   <body>
     <%= render 'layouts/navbar' %>
 
+    <div id="flash">
+     <% flash.each do |type, message| %>
+      <% if message != true %>
+        <div class="alert <%= bootstrap_class_for(type) %> fade-in">
+          <center>
+           <button class="close" data-dismiss="alert">X</button>
+           <%= message %>
+          </center>
+        </div>
+      <% end %>
+     <% end %>
+    </div>
+
     <%= yield %>
 
         <!-- Modal -->

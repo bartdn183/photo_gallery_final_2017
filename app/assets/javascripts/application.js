@@ -17,3 +17,25 @@
 //= require bootstrap-table
 //= require turbolinks
 //= require_tree .
+
+
+window.setTimeout(function() {
+	$("#flash").fadeTo(2250, 0).slideUp(800, function()
+	{
+	$(this).remove();
+	});
+}, 3000);
+
+var $zoho= $zoho || {salesiq:{values:{},ready:function(){}}};var d=document;s=d.createElement("script");s.type="text/javascript";s.defer=true;s.src="https://salesiq.zoho.com/bartverhoeven1/float.ls?embedname=bartverhoeven1";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);$zoho.salesiq.ready=function(embedinfo){$zoho.salesiq.floatbutton.visible("hide");}
+
+$(document).ready(function() {
+	$("select.dropdown-selector").select2({
+		theme: "bootstrap"
+	});
+});
+
+$(window).resize(function(){
+		if ($(this).width() > 767) {
+		  location.reload();
+		}
+});
