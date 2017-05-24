@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable
 
   include PublicActivity::Model 
+  include PublicActivity::Common
 
   validates :username, :first_name, :last_name, :role, presence: true
 

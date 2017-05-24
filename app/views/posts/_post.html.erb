@@ -1,9 +1,9 @@
 <div class="panel panel-default">
 	<div class="panel-heading padding-5-10">
 				<% if post.user.image.file? %>
-				<%= image_tag post.user.image, size: 30 %>
+				<%= link_to user_path(@user.username), class: "no-underline" do %> <%= image_tag post.user.image, size: 30 %> <% end %>
 				<% else %>
-				<%= image_tag "no_profile_pic.jpeg", size: 30 %>
+				<%= link_to user_path(@user.username), class: "no-underline" do %> <%= image_tag "no_profile_pic.jpg", size: 30 %> <% end %>
 				<% end %>&emsp; posted this <%= time_ago_in_words(post.created_at) %> ago
 				<div class="pull-right">
 				<% if current_user == post.user %>
@@ -25,7 +25,7 @@
 			  	<% if post.user.image.file? %>
 				<%= image_tag post.user.image, size: 30 %>
 				<% else %>
-				<%= image_tag "no_profile_pic.jpeg", size: 30 %>
+				<%= image_tag "no_profile_pic.jpg", size: 30 %>
 				<% end %> 
 				&emsp;
 			    <%= f.text_field :comment_entry, class: "form-control", style: "max-width: 70%; display: inline-block; height: 30px; border-radius: 2px;", placeholder: "Write a comment...", rows: 1 %> &emsp;<%= f.submit "Send", class: "btn btn-default btn-sm" %>
@@ -36,12 +36,12 @@
 			<% post.post_comments.each do |post_comment| %>
 				<div>
 			  	<% if post_comment.user.image.file? %>
-				<%= image_tag post_comment.user.image, size: 30 %>
+				<%= link_to user_path(username: post_comment.user.username), class: "no-underline" do %><%= image_tag post_comment.user.image, size: 30 %><% end %>
 				<% else %>
-				<%= image_tag "no_profile_pic.jpeg", size: 30 %>
+				<%= link_to user_path(username: post_comment.user.username), class: "no-underline" do %><%= image_tag "no_profile_pic.jpg", size: 30 %><% end %>
 				<% end %> 
 				&emsp;
-				<span style="font-size: 11px; margin-right: 20px; font-weight: 900;"><%= post_comment.user.first_name %> <%= post_comment.user.last_name %></span>
+				<%= link_to user_path(username: post_comment.user.username), class: "no-underline" do %><span style="font-size: 11px; margin-right: 20px; font-weight: 900;"><%= post_comment.user.first_name %> <%= post_comment.user.last_name %></span><% end %>
 				<%= post_comment.comment_entry %>
 					<div class="pull-right">
 					<% if current_user == post_comment.user %>
