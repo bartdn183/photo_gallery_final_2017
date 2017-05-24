@@ -22,7 +22,7 @@
           <% if current_user.image.file? %><%= image_tag current_user.image, size: 30, style: "border-radius: 2px;" %>
                   <% else %>
         <%= image_tag "no_profile_pic.jpg", size: 30, style: "border-radius: 2px;" %><% end %> &emsp;<%= current_user.first_name %> <% end %></div></li>
-          <li><%= link_to "Timeline", activities_path %></li>
+          <li><%= link_to "News Feed", activities_path %></li>
           
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-camera" aria-hidden="true"></i> Picture Albums <span class="caret"></span></a>
@@ -42,6 +42,8 @@
                     <li class="no-border-left"><%= link_to "Pictures Admin Panel", galleries_path %></li>
                     <li role="seperator" class="divider"></li>
                     <li role="seperator" class="divider"></li>
+                    <li class="no-border-left"><%= link_to 'Friends', friends_path %></li>
+                    <li role="seperator" class="divider"></li>
                     <li class="no-border-left"><%= link_to 'Edit Profile', edit_user_registration_path %></li>
                     <li class="no-border-left"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
                 </ul>
@@ -50,6 +52,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="margin-right: 10px;"><i class="fa fa-cogs" aria-hidden="true"></i> Settings <span class="caret"></span></a>
                 <ul class="dropdown-menu">
+                    <li class="no-border-left"><%= link_to 'Friends', friends_path %></li>
                     <li role="seperator" class="divider"></li>
                     <li class="no-border-left"><%= link_to 'Edit Profile', edit_user_registration_path %></li>
                     <li class="no-border-left"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
