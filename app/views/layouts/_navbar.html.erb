@@ -16,7 +16,12 @@
           <ul class="nav navbar-nav navbar-right">
 
           <% unless (!signed_in?) || (signed_in? && current_user.role == "pending") %>
-          <li class="no-border-left"><div style="padding-top: 3px;"><%= link_to user_path(current_user.username), style: "text-decoration: none;" do %><%= image_tag current_user.image, size: 30 %> &emsp;<%= current_user.first_name %> <% end %></div></li>
+          <li class="no-border-left"><div style="padding-top: 3px;"><%= link_to user_path(current_user.username), style: "text-decoration: none;" do %>
+
+
+          <% if current_user.image.file? %><%= image_tag current_user.image, size: 30, style: "border-radius: 2px;" %>
+                  <% else %>
+        <%= image_tag "no_profile_pic.jpg", size: 30, style: "border-radius: 2px;" %><% end %> &emsp;<%= current_user.first_name %> <% end %></div></li>
           <li><%= link_to "Timeline", activities_path %></li>
           
               <li class="dropdown">
