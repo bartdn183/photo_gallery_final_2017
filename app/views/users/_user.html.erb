@@ -1,0 +1,18 @@
+<div class="col-xs-6 col-sm-3 col-md-2 col-lg-2">
+	<div class="thumbnail">
+		<%= link_to user_path(user.username) do %>
+				<div class="text-center">
+				<% if user.image.file? %>
+				<%= image_tag user.image, class: "friend-picture img-rounded", style: "height: 150px;" %>
+				<% else %>
+				<%= image_tag "no_profile_pic.jpg", class: "friend-picture img-rounded", style: "height: 150px;" %>
+				<% end %>
+				</div>
+		<% end %>
+		<div class="caption">
+			<center>
+			<h5><%= user.first_name %> <%= user.last_name %></h5>
+			</center>
+		</div>
+	</div>
+</div>

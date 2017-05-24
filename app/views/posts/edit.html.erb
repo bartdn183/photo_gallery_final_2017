@@ -8,33 +8,7 @@
 			  </center>
 			</div>
 			<div class="panel-body">
-				<%= form_for(@post) do |f| %>
-					  <% if @post.errors.any? %>
-					    <div id="error_explanation">
-					      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-					      <ul>
-					      <% @post.errors.full_messages.each do |message| %>
-					        <li><%= message %></li>
-					      <% end %>
-					      </ul>
-					    </div>
-					  <% end %>
-
-					  <div class="field hidden">
-					    <%= f.label :user_id %>
-					    <%= f.number_field :user_id, value: current_user.id %>
-					  </div>
-
-					  <div class="form-group">
-					    <%= f.label :content %>
-					    <%= f.text_area :content, class: "form-control form-control-xl", rows: 4 %>
-					  </div>
-
-					  <div class="actions">
-					    <%= f.submit "UPDATE POST", class: "btn btn-success btn-block btn-large" %>
-					  </div>
-				<% end %>
+				<%= render 'form' %>
 			</div>
 			<div class="panel-footer footer-bckgr-yellow">
 				<%= link_to 'MY PROFILE', user_path(current_user.username), class: "btn btn-primary btn-block btn-large" %>

@@ -6,11 +6,10 @@ Rails.application.routes.draw do
   get 'admin_panel' => 'users#admin_panel'
 
   devise_for :users, :controllers => { :registrations => "my_registrations" }
-  
+    get 'friends' => 'users#index'
   resources :galleries, param: :name
   resources :pictures, only: [:show, :destroy]
   resources :users, only: [:show], param: :username, :path => ''
-
   root 'galleries#home'
   post 'update_role' => 'users#update_role'
   post 'delete_account' => 'users#delete_account'

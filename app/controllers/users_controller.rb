@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show]
   before_action :admin_only_access, except: [:show]
-  before_action :admin_guest_access, only: [:show]
+  before_action :admin_guest_access, only: [:show, :index]
   include ApplicationHelper
+
+  def index
+    @users = User.all
+  end
 
   def show
     @post = Post.new
