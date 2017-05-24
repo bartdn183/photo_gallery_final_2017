@@ -13,7 +13,7 @@
 
   <div class="field hidden">
     <%= f.label :user_id %>
-    <%= f.number_field :user_id %>
+    <%= f.number_field :user_id, value: current_user.id %>
   </div>
 
   <div class="form-group">

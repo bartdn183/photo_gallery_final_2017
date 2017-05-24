@@ -316,3 +316,17 @@ input:focus:-khtml-autofill {
     -khtml-text-fill-color: black;
     -khtml-box-shadow: 0 0 0px 1000px white inset;
 }
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}

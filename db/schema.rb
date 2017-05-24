@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170523230530) do
+ActiveRecord::Schema.define(version: 20170524134118) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "trackable_type"
@@ -41,22 +41,22 @@ ActiveRecord::Schema.define(version: 20170523230530) do
     t.string   "name",        null: false
     t.date     "date",        null: false
     t.text     "description"
-    t.string   "created_by",  null: false
     t.string   "updated_by"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
   end
 
   create_table "pictures", force: :cascade do |t|
     t.integer  "gallery_id",         null: false
     t.text     "description"
-    t.string   "uploaded_by",        null: false
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "user_id"
   end
 
   create_table "posts", force: :cascade do |t|

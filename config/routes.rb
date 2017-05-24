@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :activities, only: [:index]
   resources :posts
   resources :comments
   get 'admin_panel' => 'users#admin_panel'

@@ -7,7 +7,6 @@ class UsersController < ApplicationController
   def show
     @post = Post.new
     @posts = @user.posts.order('created_at DESC')
-    @activities = PublicActivity::Activity.order('created_at DESC')
   end
 
   def admin_panel

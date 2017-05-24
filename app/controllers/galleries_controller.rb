@@ -26,13 +26,13 @@ class GalleriesController < ApplicationController
 
   def create
     @gallery = Gallery.new(gallery_params)
-    @gallery.created_by = "#{current_user.first_name} #{current_user.last_name}"
+    @gallery.user_id = current_user.id
 
     respond_to do |format|
       if @gallery.save
         if params[:images]
             params[:images].each { |image|
-              @gallery.pictures.create(image: image, uploaded_by: "#{current_user.first_name} #{current_user.last_name}", gallery_id: @gallery.id)
+              @gallery.pictures.create(image: image, user_id: current_user.id, gallery_id: @gallery.id)
             }
           end
           @gallery.create_activity key: 'gallery.created', owner: @gallery
@@ -51,7 +51,7 @@ class GalleriesController < ApplicationController
           @gallery.create_activity key: 'gallery.updated', owner: @gallery
           if params[:images]
             params[:images].each { |image|
-              @gallery.pictures.create(image: image, uploaded_by: "#{current_user.first_name} #{current_user.last_name}", gallery_id: @gallery.id)
+              @gallery.pictures.create(image: image, user_id: current_user.id, gallery_id: @gallery.id)
             }
           end
         format.html { redirect_to gallery_url(@gallery), notice: 'Gallery was successfully updated.' }
@@ -76,6 +76,6 @@ class GalleriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gallery_params
-      params.require(:gallery).permit(:name, :date, :description, :created_by, :updated_by)
+      params.require(:gallery).permit(:name, :date, :description, :created_by, :updated_by, :user_id)
     end
 end
