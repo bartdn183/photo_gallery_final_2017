@@ -14,8 +14,7 @@ class Welcome < ApplicationMailer
 	def user_created(user)
 		@user = user
 		@recipients = "bartdn183@gmail.com, msand063@fiu.edu"
-		mail(to: @recipients, subject: 'New user signed up and waiting for activation!')
-		
+		mail(to: @recipients, subject: 'New user signed up and waiting for activation!')	
 	end
 
 end

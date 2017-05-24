@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :posts
   resources :comments
   get 'admin_panel' => 'users#admin_panel'
 

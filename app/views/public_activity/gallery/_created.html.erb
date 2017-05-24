@@ -1,1 +1,21 @@
-_created.html.erb
+<% if activity.trackable %>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="media">
+						<div class="pull-left">
+										<% activity.owner.created_by %> 
+						</div>
+						<div>
+							<p style="margin-bottom: 5px; font-size: 14px;"><small><%= time_ago_in_words(activity.created_at)%> ago</small></p>
+						</div>
+					</div>
+				</div>
+				<div class="panel-body">
+					<%= activity.owner.created_by %> created a new Picture Album <%= link_to activity.owner.name, gallery_path(name: activity.owner.name) %> 
+				</div>
+			</div>
+		</div>
+	</div>
+ <% end %>

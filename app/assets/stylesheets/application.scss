@@ -123,9 +123,18 @@ body {
 	padding: 7px 20px;
 }
 
+.img-rounded {
+	height: 250px;
+	max-width: 100%;
+}
+
 nav li a:hover {
 	color: #428bca !important;
 	transition: ease 2.5s;
+}
+
+.no-border-top {
+	border-top: 0 !important;
 }
 
 

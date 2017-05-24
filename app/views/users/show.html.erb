@@ -1,0 +1,104 @@
+<div class="jumbotron" style="background-color: #f5f5f5; padding-top: 20px; padding-bottom: 20px;">
+	<div class="container" style="margin-left: 3%">
+		<div class="row">
+			<div class="col-md-4">
+				<% if @user.image.file? %>
+				<%= image_tag @user.image, class: "img-rounded" %>
+				<% else %>
+				<%= image_tag "no_profile_pic.jpeg", class: "img-rounded" %>
+				<% end %>
+			</div>
+			<div class="col-md-4" style="border-left: 1px solid #ddd;">
+				<div class="table-responsive" style="padding-top: 20px;">
+					<table class="table" style="font-size: 15px;">
+						<tbody>
+							<tr>
+								<td class="no-border-top"><b>Username:</b></td>
+								<td class="no-border-top"><%= @user.username %></td>
+							</tr>
+							<tr>
+								<td class="no-border-top"><b>Name:</b></td>
+								<td class="no-border-top"><%= @user.first_name %> <%= @user.last_name %></td>
+							</tr>
+							<tr>
+								<td class="no-border-top"><b>Birthday:</b></td>
+								<td class="no-border-top"><%= @user.birthday %></td>
+							</tr>
+							<tr>
+								<td class="no-border-top"><b>City:</b></td>
+								<td class="no-border-top"><%= @user.city %></td>
+							</tr>
+							<tr>
+								<td class="no-border-top"><b>State:</b></td>
+								<td class="no-border-top"><%= @user.state %></td>
+							</tr>
+							<tr>
+								<td class="no-border-top"><b>Country:</b></td>
+								<td class="no-border-top"><%= @user.country %></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="col-md-4" style="border-left: 1px solid #ddd;">
+				<div class="table-responsive" style="padding-top: 20px;">
+					<table class="table" style="font-size: 15px;">
+						<tbody>
+							<tr>
+								<td class="no-border-top"><b>School:</b></td>
+								<td class="no-border-top"><%= @user.school %></td>
+							</tr>
+							
+							<tr>
+								<td class="no-border-top"><b>Work:</b></td>
+								<td class="no-border-top"><%= @user.work %></td>
+							</tr>
+
+							<tr>
+								<td class="no-border-top"><b>Hobbies:</b></td>
+								<td class="no-border-top"><%= @user.hobbies %></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="jumbotron">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="panel panel-default border-black">
+				<div class="panel-heading heading-bckgr-yellow">
+					<h4 class="no-margin"><i>My Posts</i></h4>
+				</div>
+				<div class="panel-body">
+				<% if current_user == @user %>
+				<%= render 'posts/form' %>
+				<% end %>
+				<hr>
+				<%= render @posts %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="panel panel-default border-black">
+				<div class="panel-heading heading-bckgr-yellow">
+					<h4 class="no-margin"><i>Timeline</i></h4>
+				</div>
+				<div class="panel-body">
+				<% if current_user == @user %>
+				<%= render 'posts/form' %>
+				<% end %>
+				<hr>
+				<%= render_activities(@activities) %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+				

@@ -1,0 +1,26 @@
+<% if activity.trackable %>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="media">
+						<div class="pull-left">
+										<% if activity.owner.image.file? %>
+										<%= image_tag activity.owner.image, size: 55 %>
+										<% else %>
+										<%= image_tag "no_profile_pic.jpeg", size: 55 %>
+										<% end %> 
+						</div>
+						<div>
+							<h4 style="margin-bottom: 2px;"><%= link_to activity.owner.username, user_path(activity.owner.username) %></h4>
+							<p style="margin-bottom: 5px; font-size: 14px;"><small><%=  time_ago_in_words(activity.created_at)%> ago</small></p>
+						</div>
+					</div>
+				</div>
+				<div class="panel-body">
+						<%= link_to "#{activity.owner.first_name} #{activity.owner.last_name}", user_path(activity.owner.username) %> became a member of this website <%=  time_ago_in_words(activity.created_at)%> ago
+				</div>
+			</div>
+		</div>
+	</div>
+ <% end %>

@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+				<% if post.user.image.file? %>
+				<%= image_tag post.user.image, size: 25 %>
+				<% else %>
+				<%= image_tag "no_profile_pic.jpeg", size: 25 %>
+				<% end %> posted this <%= time_ago_in_words(post.created_at) %> ago
+				<div class="pull-right">
+				<% if current_user == post.user %>
+				<%= link_to "edit", edit_post_path(post) %> | <%= link_to "x", post, method: :delete, confirm: "Are You Sure?" %>
+				<% end %>
+				</div>
+	</div>
+	<div class="panel-body">
+		<%= post.content %>
+	</div>
+</div>
