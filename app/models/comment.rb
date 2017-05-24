@@ -1,6 +1,7 @@
 class Comment < ApplicationRecord
 
 	include PublicActivity::Model
+	include PublicActivity::Common
 
 	belongs_to :user
 	belongs_to :gallery
