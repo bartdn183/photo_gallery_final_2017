@@ -20,7 +20,18 @@
 					</div>
 				</div>
 				<div class="panel-body padding-10">
-					<%= activity.owner.updated_by %> updated Picture Album <%= link_to activity.owner.name, gallery_path(name: activity.owner.name) %> 
+					<%= activity.owner.user.first_name %> <%= activity.owner.user.last_name %> updated picture album <%= link_to "#{activity.owner.date.strftime("%m/%Y")} #{activity.owner.name}", gallery_path(name: activity.owner.name) %>
+					<div style="margin-top: 10px;">
+					<% @count = 0 %>
+					<% activity.owner.pictures.sort_by{|t| - t.created_at.to_i}.first(10).each do |gallery| %>
+						
+						<% if activity.owner.updated_at.strftime("%m/%d/%Y %I:%M") == gallery.created_at.strftime("%m/%d/%Y %I:%M") %>
+						<%= link_to picture_path(gallery.id), class: "no-underline" do %>
+						<%= image_tag gallery.image, size: 50 %><% end %>
+						<% end %>						
+					<% end %>... <br>
+					<div style="margin-top: 10px;">
+					</div>
 				</div>
 			</div>
 		</div>
