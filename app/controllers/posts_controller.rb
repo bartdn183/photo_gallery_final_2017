@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         @post.create_activity key: 'post.created', owner: @post
-        format.html { redirect_to user_path(username: @post.user.username), notice: 'Post was successfully created.' }
+        format.html { redirect_back fallback_location: user_path(username: current_user.username), notice: 'Post was successfully created.' }
       else
         format.html { redirect_to user_path(username: @post.user.username) }
       end
@@ -25,7 +25,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.update(post_params)
         @post.create_activity key: 'post.updated', owner: @post
-        format.html { redirect_to user_path(username: @post.user.username), notice: 'Post was successfully updated.' }
+        format.html { redirect_back fallback_location: user_path(username: current_user.username), notice: 'Post was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -35,7 +35,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to user_path(username: @post.user.username), notice: 'Post was successfully destroyed.' }
+      format.html { redirect_back fallback_location: user_path(username: current_user.username), notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

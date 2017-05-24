@@ -11,7 +11,7 @@
 				<%= render 'form' %>
 			</div>
 			<div class="panel-footer footer-bckgr-yellow">
-				<%= link_to 'MY PROFILE', user_path(current_user.username), class: "btn btn-primary btn-block btn-large" %>
+				<%= link_to 'MY PROFILE', user_path(@post_comment.user.username), class: "btn btn-primary btn-block btn-large" %>
 			</div>
 		</div>
 	</div>

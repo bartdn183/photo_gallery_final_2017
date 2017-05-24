@@ -12,16 +12,16 @@
   <% end %>
 
 
-  <div class="form-group">
+  <div class="form-group hidden">
     <%= f.label :post_id %>
-    <%= f.number_field :post_id, value: post.id %>
+    <%= f.number_field :post_id, value: @post_comment.post_id %>
   </div>
 
   <div class="form-group">
-    <%= f.text_area :comment_entry, class: "form-control", placeholder: "Type comment...", rows: 1 %>
+    <%= f.text_area :comment_entry, class: "form-control form-control-xl", placeholder: "Type comment...", rows: 4 %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "UPDATE COMMENT", class: "btn btn-success btn-block btn-large" %>
   </div>
 <% end %>

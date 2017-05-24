@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         @comment.create_activity key: 'comment.created', owner: @comment
-        format.html { redirect_to picture_url(id: @comment.picture_id), notice: 'Comment was successfully created.' }
+        format.html { redirect_back fallback_location: user_path(username: current_user.username), notice: 'Comment was successfully created.' }
       else
         format.html { redirect_to picture_url(id: @comment.picture_id) }
       end
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.update(comment_params)
         @comment.create_activity key: 'comment.updated', owner: @comment
-        format.html { redirect_to picture_url(id: @comment.picture_id), notice: 'Comment was successfully updated.' }
+        format.html { redirect_back fallback_location: user_path(username: current_user.username), notice: 'Comment was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -34,7 +34,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to picture_url(id: @comment.picture_id), notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_back fallback_location: user_path(username: current_user.username), notice: 'Comment was successfully destroyed.' }
     end
   end
 

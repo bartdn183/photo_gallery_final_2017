@@ -14,11 +14,9 @@ class PostCommentsController < ApplicationController
     respond_to do |format|
       if @post_comment.save
         @post_comment.create_activity key: 'post_comment.created', owner: @post_comment
-        format.html { redirect_to friends_url, notice: 'Post comment was successfully created.' }
-        format.json { render :show, status: :created, location: @post_comment }
+        format.html { redirect_back fallback_location: user_path(username: current_user.username), notice: 'Post comment was successfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @post_comment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -29,7 +27,7 @@ class PostCommentsController < ApplicationController
     respond_to do |format|
       if @post_comment.update(post_comment_params)
         @post_comment.create_activity key: 'post_comment.updated', owner: @post_comment
-        format.html { redirect_to friends_url, notice: 'Post comment was successfully updated.' }
+        format.html { redirect_back fallback_location: user_path(username: current_user.username), notice: 'Post comment was successfully updated.' }
         format.json { render :show, status: :ok, location: @post_comment }
       else
         format.html { render :edit }
@@ -43,7 +41,7 @@ class PostCommentsController < ApplicationController
   def destroy
     @post_comment.destroy
     respond_to do |format|
-      format.html { redirect_to friends_url, notice: 'Post comment was successfully destroyed.' }
+      format.html { redirect_back fallback_location: user_path(username: current_user.username), notice: 'Post comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
