@@ -24,7 +24,6 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        @post.create_activity key: 'post.updated', owner: @post
         format.html { redirect_back fallback_location: user_path(username: current_user.username), notice: 'Post was successfully updated.' }
       else
         format.html { render :edit }

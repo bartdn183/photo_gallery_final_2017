@@ -6,10 +6,12 @@
 				<div class="panel-heading padding-5-10">
 					<div class="media">
 						<div class="pull-left">
+										<%= link_to user_path(activity.owner.user.username), class: "no-underline" do %> 
 										<% if activity.owner.user.image.file? %>
 										<%= image_tag activity.owner.user.image, size: 55 %>
 										<% else %>
 										<%= image_tag "no_profile_pic.jpg", size: 55 %>
+										<% end %>
 										<% end %>
 						</div>
 						<div>
@@ -31,10 +33,12 @@
 
 								  <div class="form-group">
 								  	<div>
+								  	<%= link_to user_path(activity.owner.user.username), class: "no-underline" do %> 
 								  	<% if activity.owner.user.image.file? %>
 									<%= image_tag activity.owner.user.image, size: 30 %>
 									<% else %>
 									<%= image_tag "no_profile_pic.jpg", size: 30 %>
+									<% end %>
 									<% end %> 
 									&emsp;
 								    <%= f.text_field :comment_entry, class: "form-control", style: "max-width: 70%; display: inline-block; height: 30px; border-radius: 2px;", placeholder: "Write a comment...", rows: 1 %> &emsp;<%= f.submit "Send", class: "btn btn-default btn-sm" %>

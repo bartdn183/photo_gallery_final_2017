@@ -38,7 +38,7 @@
                     <td><%= gallery.name %></td>
                     <td><%= gallery.date %></td>
                     <td><%= gallery.description %></td>
-                    <td><%= gallery.created_by %></td>
+                    <td><%= gallery.user.first_name %> <%= gallery.user.last_name %></td>
                     <td><%= gallery.updated_by %></td>
                     <td><%= link_to gallery, class: "btn btn-info btn-sm" do %> <span class="glyphicon glyphicon-blackboard"></span> SHOW GALLERY <% end %></td>
                     <td><%= link_to edit_gallery_path(gallery), class: "btn btn-warning btn-sm" do %> <span class="glyphicon glyphicon-edit"></span> EDIT GALLERY <% end %></td>

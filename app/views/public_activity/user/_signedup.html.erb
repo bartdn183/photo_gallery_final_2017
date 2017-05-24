@@ -5,11 +5,13 @@
 				<div class="panel-heading padding-5-10">
 					<div class="media">
 						<div class="pull-left">
+							<%= link_to user_path(activity.owner.username), class: "no-underline" do %> 
 										<% if activity.owner.image.file? %>
 										<%= image_tag activity.owner.image, size: 55 %>
 										<% else %>
 										<%= image_tag "no_profile_pic.jpg", size: 55 %>
 										<% end %>
+									<% end %>
 						</div>
 						<div>
 							<h4 style="margin-bottom: 2px;"><%= link_to activity.owner.username, user_path(activity.owner.username) %></h4>
