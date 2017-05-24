@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   include ApplicationHelper
 
   def index
-    @users = User.all
+    @users = User.where.not(username: current_user.username)
   end
 
   def show
