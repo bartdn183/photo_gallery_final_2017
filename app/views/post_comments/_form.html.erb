@@ -1,0 +1,27 @@
+<%= form_for(@post_comment) do |f| %>
+  <% if @post_comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post_comment.errors.count, "error") %> prohibited this post_comment from being saved:</h2>
+
+      <ul>
+      <% @post_comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="form-group">
+    <%= f.label :post_id %>
+    <%= f.number_field :post_id, value: post.id %>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_area :comment_entry, class: "form-control", placeholder: "Type comment...", rows: 1 %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

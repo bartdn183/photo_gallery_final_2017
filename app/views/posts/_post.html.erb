@@ -1,10 +1,10 @@
 <div class="panel panel-default">
-	<div class="panel-heading">
+	<div class="panel-heading padding-5-10">
 				<% if post.user.image.file? %>
-				<%= image_tag post.user.image, size: 25 %>
+				<%= image_tag post.user.image, size: 30 %>
 				<% else %>
-				<%= image_tag "no_profile_pic.jpeg", size: 25 %>
-				<% end %> posted this <%= time_ago_in_words(post.created_at) %> ago
+				<%= image_tag "no_profile_pic.jpeg", size: 30 %>
+				<% end %>&emsp; posted this <%= time_ago_in_words(post.created_at) %> ago
 				<div class="pull-right">
 				<% if current_user == post.user %>
 				<%= link_to "edit", edit_post_path(post) %> | <%= link_to "x", post, method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -13,5 +13,45 @@
 	</div>
 	<div class="panel-body">
 		<%= post.content %>
-	</div>
+		<hr class="margin-10">
+		<%= form_for(@post_comment) do |f| %>
+			  <div class="form-group hidden">
+			    <%= f.label :post_id %>
+			    <%= f.number_field :post_id, value: post.id %>
+			  </div>
+
+			  <div class="form-group">
+			  	<div>
+			  	<% if post.user.image.file? %>
+				<%= image_tag post.user.image, size: 30 %>
+				<% else %>
+				<%= image_tag "no_profile_pic.jpeg", size: 30 %>
+				<% end %> 
+				&emsp;
+			    <%= f.text_field :comment_entry, class: "form-control", style: "max-width: 70%; display: inline-block; height: 30px; border-radius: 2px;", placeholder: "Write a comment...", rows: 1 %> &emsp;<%= f.submit "Send", class: "btn btn-default btn-sm" %>
+			    </div>
+			  </div>
+			<% end %>
+		<hr class="margin-10">
+			<% post.post_comments.each do |post_comment| %>
+				<div>
+			  	<% if post_comment.user.image.file? %>
+				<%= image_tag post_comment.user.image, size: 30 %>
+				<% else %>
+				<%= image_tag "no_profile_pic.jpeg", size: 30 %>
+				<% end %> 
+				&emsp;
+				<span style="font-size: 11px; margin-right: 20px; font-weight: 900;"><%= post_comment.user.first_name %> <%= post_comment.user.last_name %></span>
+				<%= post_comment.comment_entry %>
+					<div class="pull-right">
+					<% if current_user == post_comment.user %>
+					<%= link_to "edit", edit_post_comment_path(post_comment) %> | <%= link_to "x", post_comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+					<% end %>
+					</div>
+				</div>
+				<span style="font-size: 11px;"><i><%= time_ago_in_words(post_comment.created_at) %> ago</i></span>
+			
+				<hr>
+			<% end %>
+		</div>
 </div>

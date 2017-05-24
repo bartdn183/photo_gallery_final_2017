@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.easing
+//= require select2
 //= require bootstrap-sprockets
 //= require bootstrap-table
 //= require turbolinks

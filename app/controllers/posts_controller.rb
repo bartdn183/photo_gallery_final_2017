@@ -8,8 +8,6 @@ class PostsController < ApplicationController
     no_access(@post)
   end
 
-  # POST /posts
-  # POST /posts.json
   def create
     @post = Post.new(post_params)
 
@@ -23,23 +21,17 @@ class PostsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /posts/1
-  # PATCH/PUT /posts/1.json
   def update
     respond_to do |format|
       if @post.update(post_params)
         @post.create_activity key: 'post.updated', owner: @post
         format.html { redirect_to user_path(username: @post.user.username), notice: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /posts/1
-  # DELETE /posts/1.json
   def destroy
     @post.destroy
     respond_to do |format|

@@ -1,0 +1,9 @@
+<% post.post_comments.reverse_each do |post_comment| %>
+	<h5 class="no-margin"><%= post_comment.user.first_name %> <%= post_comment.user.last_name %></h5>
+	<p><i><%= time_ago_in_words(post_comment.created_at) %> ago</i></p>
+	<p><%= post_comment.comment_entry %></p>
+	<% if current_user == post_comment.user %>
+	<%= link_to "Edit", edit_post_comment_path(post_comment) %> | <%= link_to "Delete", post_comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+	<% end %>
+	<hr>
+<% end %>

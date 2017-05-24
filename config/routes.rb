@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :post_comments
   resources :activities, only: [:index]
   resources :posts
   resources :comments

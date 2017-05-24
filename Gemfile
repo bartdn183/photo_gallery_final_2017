@@ -12,6 +12,7 @@ gem 'awesome_print', require:"ap"
 gem 'jquery-easing-rails'
 gem 'aws-sdk-v1'
 gem 'aws-sdk', '~> 2.0'
+gem 'select2-rails'
 gem 'public_activity'
 gem 'rails_12factor'
 

@@ -11,6 +11,8 @@ class UsersController < ApplicationController
   def show
     @post = Post.new
     @posts = @user.posts.order('created_at DESC')
+    @post_comment = PostComment.new
+    @post_comments = PostComment.all
   end
 
   def admin_panel
