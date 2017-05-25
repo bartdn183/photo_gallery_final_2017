@@ -1,4 +1,6 @@
 <% if activity.trackable %>
+	<div class="row">
+		<div class="col-md-12">
 			<div class="panel panel-default">
 				<div class="panel-heading padding-5-10">
 					<div class="media">
@@ -18,7 +20,7 @@
 					</div>
 				</div>
 				<div class="panel-body padding-10">
-					<%= activity.owner.user.first_name %> <%= activity.owner.user.last_name %> updated picture album <%= link_to "#{activity.owner.date.strftime("%m/%Y")} #{activity.owner.name}", gallery_path(name: activity.owner.name) %>
+					<%= activity.owner.user.first_name %> <%= activity.owner.user.last_name %> updated picture album <%= link_to "#{activity.owner.date.strftime("%Y-%m")} #{activity.owner.name}", gallery_path(name: activity.owner.name) %>
 					<div style="margin-top: 10px;">
 					<% @count = 0 %>
 					<% activity.owner.pictures.sort_by{|t| - t.created_at.to_i}.first(10).each do |gallery| %>
@@ -32,4 +34,6 @@
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
  <% end %>
