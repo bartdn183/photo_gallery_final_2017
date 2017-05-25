@@ -11,7 +11,7 @@
 				<% end %>
 				</div>
 	</div>
-	<div class="panel-body">
+	<div class="panel-body padding-10">
 		<%= post.content %>
 		<hr class="margin-10">
 		<%= form_for(@post_comment) do |f| %>
@@ -34,7 +34,7 @@
 			<% end %>
 		<hr class="margin-10">
 			<% post.post_comments.each do |post_comment| %>
-				<div>
+				<div class="padding-5-10">
 			  	<% if post_comment.user.image.file? %>
 				<%= link_to user_path(username: post_comment.user.username), class: "no-underline" do %><%= image_tag post_comment.user.image, size: 30 %><% end %>
 				<% else %>
