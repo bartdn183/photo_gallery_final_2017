@@ -4,6 +4,7 @@ class Gallery < ApplicationRecord
 
 	has_many :pictures, dependent: :destroy
 	has_many :comments, dependent: :destroy
+	has_many :gallery_comments, dependent: :destroy
 	belongs_to :user
 
 	validates :name, presence: true, uniqueness: true

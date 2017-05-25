@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :admin_guest_access, except: [:create, :edit, :update, :destroy]
+  before_action :admin_guest_access, only: [:create, :edit, :update, :destroy]
   include ApplicationHelper
 
   # GET /posts/1/edit
