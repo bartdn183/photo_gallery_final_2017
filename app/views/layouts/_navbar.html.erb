@@ -27,9 +27,9 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-camera" aria-hidden="true"></i> Picture Albums <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li id="Link"><a href="#" data-toggle="modal" data-target="#videoModal"  class="wedding_video"> <i class="fa fa-video-camera" aria-hidden="true"></i> Wedding Video</a></li>
+                    <li id="Link" class="text-left"><a href="#" data-toggle="modal" data-target="#videoModal"  class="wedding_video"> <i class="fa fa-video-camera" aria-hidden="true"></i> Wedding Video</a></li>
                     <% @galleries.each do |gallery| %>
-                        <li class="no-border-left"><%= link_to "#{gallery.date.strftime('%Y')} #{gallery.name} (#{gallery.pictures.count})", gallery_path(gallery) %> </li> 
+                        <li class="no-border-left"><%= link_to "#{gallery.date.strftime('%Y')} #{gallery.name} (#{gallery.pictures.count})", gallery_path(gallery), class: "text-left" %> </li> 
                     <% end %>
                 </ul>
               </li>
