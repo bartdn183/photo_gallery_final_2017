@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_back fallback_location: user_path(username: current_user.username), notice: 'Comment was successfully updated.' }
+        format.html { redirect picture_path(id: @comment.picture_id), notice: 'Comment was successfully updated.' }
       else
         format.html { render :edit }
       end

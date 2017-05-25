@@ -27,7 +27,7 @@ class PostCommentsController < ApplicationController
   def update
     respond_to do |format|
       if @post_comment.update(post_comment_params)
-        format.html { redirect_back fallback_location: user_path(username: current_user.username), notice: 'Post comment was successfully updated.' }
+        format.html { redirect activities_url, notice: 'Post comment was successfully updated.' }
       else
         format.html { render :edit }
       end

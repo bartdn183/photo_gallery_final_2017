@@ -24,7 +24,7 @@ class GalleryCommentsController < ApplicationController
   def update
     respond_to do |format|
       if @gallery_comment.update(gallery_comment_params)
-        format.html { redirect_back fallback_location: user_path(username: current_user.username), notice: 'Gallery comment was successfully updated.' }
+        format.html { redirect activities_url, notice: 'Gallery comment was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -34,7 +34,7 @@ class GalleryCommentsController < ApplicationController
   def destroy
     @gallery_comment.destroy
     respond_to do |format|
-      format.html { redirect_to redirect_back fallback_location: user_path(username: current_user.username), notice: 'Gallery comment was successfully destroyed.' }
+      format.html { redirect_back fallback_location: user_path(username: current_user.username), notice: 'Gallery comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
