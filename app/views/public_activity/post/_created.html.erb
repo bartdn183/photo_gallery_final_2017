@@ -41,7 +41,7 @@
 									<% end %>
 									<% end %> 
 									&emsp;
-								    <%= f.text_field :comment_entry, class: "form-control", style: "max-width: 70%; display: inline-block; height: 30px; border-radius: 2px;", placeholder: "Write a comment...", rows: 1 %> &emsp;<%= f.submit "Send", class: "btn btn-default btn-sm" %>
+								    <%= f.text_field :comment_entry, required: true, class: "form-control", style: "max-width: 70%; display: inline-block; height: 30px; border-radius: 2px;", placeholder: "Write a comment...", rows: 1 %> &emsp;<%= f.submit "Send", class: "btn btn-default btn-sm" %>
 								    </div>
 								  </div>
 								<% end %>

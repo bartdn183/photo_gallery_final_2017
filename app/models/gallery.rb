@@ -1,6 +1,7 @@
 class Gallery < ApplicationRecord
 
 	include PublicActivity::Model
+	include PublicActivity::Common
 
 	has_many :pictures, dependent: :destroy
 	has_many :comments, dependent: :destroy

@@ -5,6 +5,7 @@ class PostCommentsController < ApplicationController
 
   # GET /post_comments/1/edit
   def edit
+    no_access(@post_comment)
   end
 
   # POST /post_comments

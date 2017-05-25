@@ -27,7 +27,50 @@
 						<%= image_tag gallery.image, size: 50 %><% end %>
 					<% end %>...
 					</div>
-				</div>
+						<hr class="margin-10">
+							<%= form_for(@gallery_comment) do |f| %>
+
+						  <div class="form-group hidden">
+						    <%= f.label :gallery_id %>
+						    <%= f.number_field :gallery_id, value: activity.owner.id %>
+						  </div>
+								  <div class="form-group">
+								  	<div>
+								  	<%= link_to user_path(activity.owner.user.username), class: "no-underline" do %> 
+								  	<% if activity.owner.user.image.file? %>
+									<%= image_tag activity.owner.user.image, size: 30 %>
+									<% else %>
+									<%= image_tag "no_profile_pic.jpg", size: 30 %>
+									<% end %>
+									<% end %> 
+									&emsp;
+								    <%= f.text_field :comment_entry, class: "form-control", style: "max-width: 70%; display: inline-block; height: 30px; border-radius: 2px;", placeholder: "Write a comment...", rows: 1 %> &emsp;<%= f.submit "Send", class: "btn btn-default btn-sm" %>
+								    </div>
+								  </div>
+						<% end %>
+							<hr class="margin-10">
+						<% activity.owner.gallery_comments.each do |gallery_comment| %>
+							<div>
+						  	<% if gallery_comment.user.image.file? %>
+							<%= link_to user_path(username: gallery_comment.user.username), class: "no-underline" do %><%= image_tag gallery_comment.user.image, size: 30 %><% end %>
+							<% else %>
+							<%= link_to user_path(username: gallery_comment.user.username), class: "no-underline" do %><%= image_tag "no_profile_pic.jpg", size: 30 %><% end %>
+							<% end %> 
+							&emsp;
+							<%= link_to user_path(username: gallery_comment.user.username), class: "no-underline" do %><span style="font-size: 11px; margin-right: 20px; font-weight: 900;"><%= gallery_comment.user.first_name %> <%= gallery_comment.user.last_name %></span><% end %>
+							<%= gallery_comment.comment_entry %>
+								<div class="pull-right">
+
+								<% if current_user.id == gallery_comment.user_id %>
+								<%= link_to "edit", edit_gallery_comment_path(gallery_comment) %> | <%= link_to "x", gallery_comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+								<% end %>
+								</div>
+							</div>
+							<span style="font-size: 11px;"><i><%= time_ago_in_words(gallery_comment.created_at) %> ago</i></span>
+						
+							<hr class="margin-10">
+						<% end %>
+				</div>	
 			</div>
 		</div>
 	</div>
