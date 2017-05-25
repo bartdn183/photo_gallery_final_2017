@@ -363,3 +363,13 @@ input:focus:-khtml-autofill {
     color: $state-danger-text;
   }
 }
+
+.dropdown-submenu {
+	position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+	top: 0;
+	right: 100%;
+	margin-top: -1%;
+}

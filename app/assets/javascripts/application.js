@@ -20,6 +20,7 @@
 //= require_tree .
 
 
+
 window.setTimeout(function() {
 	$("#flash").fadeTo(2250, 0).slideUp(800, function()
 	{
