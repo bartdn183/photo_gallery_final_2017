@@ -1,52 +1,34 @@
 class GalleryCommentsController < ApplicationController
-  before_action :set_gallery_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_gallery_comment, only: [:edit, :update, :destroy]
+  before_action :admin_guest_access, only: [:create, :edit, :update, :destroy]
+  include ApplicationHelper
 
-  # GET /gallery_comments
-  # GET /gallery_comments.json
-  def index
-    @gallery_comments = GalleryComment.all
-  end
-
-  # GET /gallery_comments/1
-  # GET /gallery_comments/1.json
-  def show
-  end
-
-  # GET /gallery_comments/new
   def new
     @gallery_comment = GalleryComment.new
   end
 
-  # GET /gallery_comments/1/edit
   def edit
   end
 
-  # POST /gallery_comments
-  # POST /gallery_comments.json
   def create
     @gallery_comment = GalleryComment.new(gallery_comment_params)
+    @gallery_comment.user_id = current_user.id
 
     respond_to do |format|
       if @gallery_comment.save
-        format.html { redirect_to @gallery_comment, notice: 'Gallery comment was successfully created.' }
-        format.json { render :show, status: :created, location: @gallery_comment }
+        @gallery_comment.create_activity key: 'gallery_comment.created', owner: @gallery_comment
       else
         format.html { render :new }
-        format.json { render json: @gallery_comment.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /gallery_comments/1
-  # PATCH/PUT /gallery_comments/1.json
   def update
     respond_to do |format|
       if @gallery_comment.update(gallery_comment_params)
         format.html { redirect_to @gallery_comment, notice: 'Gallery comment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @gallery_comment }
       else
         format.html { render :edit }
-        format.json { render json: @gallery_comment.errors, status: :unprocessable_entity }
       end
     end
   end

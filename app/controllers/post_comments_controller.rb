@@ -1,5 +1,7 @@
 class PostCommentsController < ApplicationController
-  before_action :set_post_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_post_comment, only: [:edit, :update, :destroy]
+  before_action :admin_guest_access, only: [:create, :edit, :update, :destroy]
+  include ApplicationHelper
 
   # GET /post_comments/1/edit
   def edit
@@ -21,17 +23,12 @@ class PostCommentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /post_comments/1
-  # PATCH/PUT /post_comments/1.json
   def update
     respond_to do |format|
       if @post_comment.update(post_comment_params)
-        @post_comment.create_activity key: 'post_comment.updated', owner: @post_comment
         format.html { redirect_back fallback_location: user_path(username: current_user.username), notice: 'Post comment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @post_comment }
       else
         format.html { render :edit }
-        format.json { render json: @post_comment.errors, status: :unprocessable_entity }
       end
     end
   end
