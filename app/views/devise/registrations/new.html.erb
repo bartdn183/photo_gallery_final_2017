@@ -125,8 +125,13 @@
         </div>
 
         <div class="form-group">
-          <strong>Upload Profile Picture</strong>
+          <strong>Upload Profile Picture:</strong><br>
+          <label class="btn btn-primary btn-sm" style= "margin-top: 7px;">
+            Upload
+            <span style="display:none;">
           <%= f.file_field :image %>
+            </span>
+          </label>
         </div>
 
         <div class="form-group hidden">
